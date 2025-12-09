@@ -1,0 +1,14 @@
+# Python
+*.pyc
+__pycache__/
+.venv/
+
+# Rust
+/target/
+
+# Go
+/bin/
+/*.exe
+
+# Logs
+*.log

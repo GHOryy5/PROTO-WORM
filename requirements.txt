@@ -1,0 +1,12 @@
+# Symbolic Execution Engine (Angr is the industry standard)
+angr==9.2.100
+
+# Control Flow Graph Visualization
+pygraphviz==1.11
+
+# FFI wrapper for Rust core
+cffi==1.16.0
+
+# Web UI
+Flask==2.3.3
+gunicorn==21.2.0

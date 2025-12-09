@@ -1,0 +1,15 @@
+[workspace]
+members = [
+    "worm_core",
+]
+
+[package]
+name = "proto_worm"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# Dependencies for the root workspace, though mostly used in worm_core
+[dependencies]
+# We'll put core FFI and shared dependencies here if they were a larger project
+# For now, we rely on the specific Cargo.toml in worm_core
