@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package proto_worm;
+
+service Orchestration {
+    // Fuzzer -> Analyzer: "I crashed something"
+    rpc ReportCrash (CrashDump) returns (AnalysisResult);
+    
+    // Analyzer -> Fuzzer: "This input is interesting, fuzz it more"
+    rpc PrioritizeInput (TestCase) returns (Ack);
+}
+
+message CrashDump {
+    bytes raw_packet = 1;
+    string target_node = 2;       // e.g., "login-service"
+    string error_signal = 3;       // e.g., "SIGSEGV", "SIGABRT"
+    map<string, string> registers = 4;
+    int64 timestamp = 5;
+}
+
+message AnalysisResult {
+    bool is_security_bug = 1;
+    float crash_likelihood = 2;
+    string suggested_mutation = 3;
+    int64 execution_time_us = 4;
+}
+
+message TestCase {
+    bytes payload = 1;
+    float anomaly_score = 2;
+    string grammar_state = 3;
+}
+
+message Ack {
+    bool success = 1;
+}
